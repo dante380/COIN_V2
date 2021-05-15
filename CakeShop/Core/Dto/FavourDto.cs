@@ -1,36 +1,37 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Dto
 {
-    public class Cake
+    public class FavourDto
     {
         public int Id { get; set; }
 
         [Required]
-        [StringLength(1024)]
+        [Display(Name = "Название услуги")]
         public string Name { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [Display(Name = "Краткое описание")]
+        [MaxLength(50)]
         public string ShortDescription { get; set; }
 
         [Required]
-        [StringLength(1024)]
+        [Display(Name = "Длинное название")]
+        [MaxLength(1024)]
         public string LongDescription { get; set; }
 
         [Required]
-        [StringLength(1024)]
+        [Display(Name = "Цена")]
         public decimal Price { get; set; }
 
         [Required]
-        [StringLength(1024)]
+        [Display(Name = "Ссылка картинки")]
         public string ImageUrl { get; set; }
 
-        [Required]
-        [StringLength(1024)]
+        [Display(Name = "Это услуга недели?")]
         public bool IsCakeOfTheWeek { get; set; }
 
+        [Display(Name = "Категория")]
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
     }
 }

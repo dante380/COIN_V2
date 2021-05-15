@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class Order_OrderDetails_Model : Migration
     {
@@ -49,7 +49,7 @@ namespace CakeShop.Migrations
                     table.ForeignKey(
                         name: "FK_OrderDetails_Cakes_CakeId",
                         column: x => x.CakeId,
-                        principalTable: "Cakes",
+                        principalTable: "Favours",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -63,7 +63,7 @@ namespace CakeShop.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_CakeId",
                 table: "OrderDetails",
-                column: "CakeId");
+                column: "FavourId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderId",

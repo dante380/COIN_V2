@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
     public class ShoppingCartItem
     {
@@ -8,9 +8,9 @@ namespace CakeShop.Core.Models
 
         public int Qty { get; set; }
 
-        public int CakeId { get; set; }
+        public int FavourId { get; set; }
 
-        public Cake Cake { get; set; }
+        public Favour Favour { get; set; }
 
         [Required]
         [StringLength(1024)]

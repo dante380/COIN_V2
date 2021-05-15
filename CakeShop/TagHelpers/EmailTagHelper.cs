@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace CakeShop.TagHelpers
+namespace FavoursShop.TagHelpers
 {
     [HtmlTargetElement("email")]
     public class EmailTagHelper : TagHelper

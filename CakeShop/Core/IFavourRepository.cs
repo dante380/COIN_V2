@@ -1,20 +1,20 @@
-﻿using CakeShop.Core.Dto;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using FavoursShop.Core.Dto;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
     public interface IFavourRepository
     {
-        Task<IEnumerable<Cake>> GetFavours(string category = null);
-        Task<IEnumerable<Cake>> GetFavoursOfTheWeek();
+        Task<IEnumerable<Favour>> GetFavours(string category = null);
+        Task<IEnumerable<Favour>> GetFavoursOfTheWeek();
 
-        Task<Cake> GetFavourById(int favourId);
+        Task<Favour> GetFavourById(int favourId);
 
-        Task<IEnumerable<CakeNameIdDto>> GetAllFavoursNameId();
+        Task<IEnumerable<FavourNameIdDto>> GetAllFavoursNameId();
 
-        void UpdateFavour(Cake favour);
-        Task AddFavourAsync(Cake favour);
+        void UpdateFavour(Favour favour);
+        Task AddFavourAsync(Favour favour);
         void Delete(int id);
     }
 }

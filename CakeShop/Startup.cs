@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using CakeShop.Core;
-using CakeShop.Core.Models;
-using CakeShop.Persistence;
+using FavoursShop.Core;
+using FavoursShop.Core.Models;
+using FavoursShop.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CakeShop
+namespace FavoursShop
 {
     public class Startup
     {
@@ -22,7 +22,7 @@ namespace CakeShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<IFavourRepository, CakeRepository>();
+            services.AddScoped<IFavourRepository, FavourRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -30,7 +30,7 @@ namespace CakeShop
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddDbContext<CakeShopDbContext>(ctx =>
+            services.AddDbContext<FavourShopDbContext>(ctx =>
             {
                 ctx.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
@@ -44,7 +44,7 @@ namespace CakeShop
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                 options.Password.RequireUppercase = false;
             })
-            .AddEntityFrameworkStores<CakeShopDbContext>();
+            .AddEntityFrameworkStores<FavourShopDbContext>();
 
             //services.AddSession();
 
@@ -74,8 +74,8 @@ namespace CakeShop
 
                 //routes.MapRoute(
                 //    name: "categoryFilter",
-                //    template: "Cakes/{action}/{category?}",
-                //    defaults: new { Controller = "Cake", action = "List" });
+                //    template: "Favours/{action}/{category?}",
+                //    defaults: new { Controller = "Favour", action = "List" });
 
                 routes.MapRoute(
                     name: "default",

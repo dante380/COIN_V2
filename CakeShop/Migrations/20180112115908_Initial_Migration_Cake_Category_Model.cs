@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class Initial_Migration_Cake_Category_Model : Migration
     {
@@ -24,7 +24,7 @@ namespace CakeShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cakes",
+                name: "Favours",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -53,14 +53,14 @@ namespace CakeShop.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cakes_CategoryId",
-                table: "Cakes",
+                table: "Favours",
                 column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cakes");
+                name: "Favours");
 
             migrationBuilder.DropTable(
                 name: "Categories");

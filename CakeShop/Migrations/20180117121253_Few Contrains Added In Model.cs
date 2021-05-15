@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class FewContrainsAddedInModel : Migration
     {
@@ -26,7 +26,7 @@ namespace CakeShop.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ShortDescription",
-                table: "Cakes",
+                table: "Favours",
                 maxLength: 1024,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -34,7 +34,7 @@ namespace CakeShop.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Cakes",
+                table: "Favours",
                 maxLength: 1024,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -42,7 +42,7 @@ namespace CakeShop.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "LongDescription",
-                table: "Cakes",
+                table: "Favours",
                 maxLength: 1024,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -50,7 +50,7 @@ namespace CakeShop.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ImageUrl",
-                table: "Cakes",
+                table: "Favours",
                 maxLength: 1024,
                 nullable: false,
                 oldClrType: typeof(string),
@@ -75,28 +75,28 @@ namespace CakeShop.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "ShortDescription",
-                table: "Cakes",
+                table: "Favours",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 50);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",
-                table: "Cakes",
+                table: "Favours",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 1024);
 
             migrationBuilder.AlterColumn<string>(
                 name: "LongDescription",
-                table: "Cakes",
+                table: "Favours",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 1024);
 
             migrationBuilder.AlterColumn<string>(
                 name: "ImageUrl",
-                table: "Cakes",
+                table: "Favours",
                 nullable: true,
                 oldClrType: typeof(string),
                 oldMaxLength: 1024);

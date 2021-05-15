@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<CakeNameIdDto>
 @{
-    ViewData["Title"] = "ManageCakes";
+    ViewData["Title"] = "ManageFavours";
 }
 <h2>Управление Услугами</h2>
 <br />
 <div>
-    <a asp-action="AddCake" class="btn buy-now-btn">Добавить новую услугу</a>
+    <a asp-action="AddFavour" class="btn buy-now-btn">Добавить новую услугу</a>
 </div>
 <br />
 <table class="table ">
@@ -21,7 +21,7 @@
             <tr id="cake-@cake.Id">
                 <td>@cake.Name</td>
                 <td>
-                    <a class="btn btn-link btn-no-effect" asp-action="EditCake" asp-route-id="@cake.Id">изменить </a>
+                    <a class="btn btn-link btn-no-effect" asp-action="EditFavour" asp-route-id="@cake.Id">изменить </a>
                     |
                     <button class="btn btn-link btn-no-effect deleteBtn" data-id="@cake.Id">удалить :(</button>
                 </td>
@@ -39,10 +39,10 @@
                 return;
 
             $.ajax({
-                url: '/admin/manageCakes/' + id,
+                url: '/admin/manageFavours/' + id,
                 type: 'DELETE',
                 success: () => {
-                    const target = $("#cake-" + id);
+                    const target = $("#favour-" + id);
                     $(target).fadeOut(500, () => $(target).remove());
                 },
                 error: (e) => {

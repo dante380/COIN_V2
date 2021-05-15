@@ -1,6 +1,6 @@
-﻿using CakeShop.Core.Models;
+﻿using FavoursShop.Core.Models;
 
-namespace CakeShop.Core.ViewModel
+namespace FavoursShop.Core.ViewModel
 {
     public class ShoppingCartViewModel
     {

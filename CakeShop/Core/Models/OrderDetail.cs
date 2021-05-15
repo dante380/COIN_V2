@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
     public class OrderDetail
     {
@@ -8,7 +8,7 @@ namespace CakeShop.Core.Models
 
         [Required]
         [MaxLength(1024)]
-        public string CakeName { get; set; }
+        public string FavourName { get; set; }
         public int Qty { get; set; }
         public decimal Price { get; set; }
 

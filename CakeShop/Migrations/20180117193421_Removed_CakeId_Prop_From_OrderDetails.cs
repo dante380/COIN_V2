@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class Removed_CakeId_Prop_From_OrderDetails : Migration
     {
@@ -17,11 +17,11 @@ namespace CakeShop.Migrations
                 table: "OrderDetails");
 
             migrationBuilder.DropColumn(
-                name: "CakeId",
+                name: "FavourId",
                 table: "OrderDetails");
 
             migrationBuilder.AddColumn<string>(
-                name: "CakeName",
+                name: "FavourName",
                 table: "OrderDetails",
                 maxLength: 1024,
                 nullable: false,
@@ -31,11 +31,11 @@ namespace CakeShop.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "CakeName",
+                name: "FavourName",
                 table: "OrderDetails");
 
             migrationBuilder.AddColumn<int>(
-                name: "CakeId",
+                name: "FavourId",
                 table: "OrderDetails",
                 nullable: false,
                 defaultValue: 0);
@@ -43,13 +43,13 @@ namespace CakeShop.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_CakeId",
                 table: "OrderDetails",
-                column: "CakeId");
+                column: "FavourId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_OrderDetails_Cakes_CakeId",
                 table: "OrderDetails",
-                column: "CakeId",
-                principalTable: "Cakes",
+                column: "FavourId",
+                principalTable: "Favours",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

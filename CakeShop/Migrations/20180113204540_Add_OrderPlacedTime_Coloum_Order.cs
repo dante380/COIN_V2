@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class Add_OrderPlacedTime_Coloum_Order : Migration
     {

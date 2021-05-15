@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.ViewModel
+namespace FavoursShop.Core.ViewModel
 {
     public class LoginViewModel
     {

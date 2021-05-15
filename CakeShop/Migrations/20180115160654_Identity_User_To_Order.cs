@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class Identity_User_To_Order : Migration
     {

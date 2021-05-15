@@ -1,19 +1,19 @@
-﻿using CakeShop.Core.Models;
-using CakeShop.Core.ViewModel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FavoursShop.Core.Models;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Controllers
+namespace FavoursShop.Controllers
 {
     [Route("/service")]
     public class FavourController : Controller
     {
-        private readonly IFavourRepository _cakeRepository;
+        private readonly IFavourRepository _favourRepository;
         private readonly ICategoryRepository _categoryRepository;
 
-        public FavourController(IFavourRepository cakeRepository, ICategoryRepository categoryRepository)
+        public FavourController(IFavourRepository favourRepository, ICategoryRepository categoryRepository)
         {
-            _cakeRepository = cakeRepository;
+            _favourRepository = favourRepository;
             _categoryRepository = categoryRepository;
         }
 
@@ -21,21 +21,21 @@ namespace CakeShop.Controllers
         public async Task<IActionResult> List(string category)
         {
             var selectedCategory = !string.IsNullOrWhiteSpace(category) ? category : null;
-            var cakesListViewModel = new CakesListViewModel
+            var favoursListViewModel = new FavoursListViewModel
             {
-                Cakes = await _cakeRepository.GetFavours(selectedCategory),
+                Favours = await _favourRepository.GetFavours(selectedCategory),
                 CurrentCategory = selectedCategory ?? "All services"
             };
-            return View(cakesListViewModel);
+            return View(favoursListViewModel);
         }
 
         [HttpGet("details/{id}")]
         public async Task<IActionResult> Details(int id)
         {
 
-            var cake = await _cakeRepository.GetFavourById(id);
+            var favour = await _favourRepository.GetFavourById(id);
 
-            return View(cake);
+            return View(favour);
         }
     }
 }

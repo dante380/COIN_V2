@@ -1,0 +1,52 @@
+﻿@model FavourCreateUpdateViewModel
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label asp-for="FavourDto.Name"></label>
+                <input asp-for="FavourDto.Name" class="form-control" />
+                <span asp-validation-for="FavourDto.Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavourDto.CategoryId"></label>
+                <select class="custom-select" asp-for="FavourDto.CategoryId">
+                    <option value=""></option>
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="FavourDto.CategoryId"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavourDto.ShortDescription"></label>
+                <input asp-for="FavourDto.ShortDescription" class="form-control" />
+                <span asp-validation-for="FavourDto.ShortDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavourDto.LongDescription"></label>
+                <textarea asp-for="FavourDto.LongDescription" class="form-control"></textarea>
+                <span asp-validation-for="FavourDto.LongDescription"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavourDto.Price"></label>
+                <input asp-for="FavourDto.Price" class="form-control" />
+                <span asp-validation-for="FavourDto.Price"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavourDto.ImageUrl"></label>
+                <input asp-for="FavourDto.ImageUrl" class="form-control" />
+                <span asp-validation-for="FavourDto.ImageUrl"></span>
+            </div>
+            <div class="form-check form-group">
+                <input type="checkbox" class="form-check-input" asp-for="FavourDto.IsCakeOfTheWeek">
+                <label class="form-check-label" asp-for="FavourDto.IsCakeOfTheWeek"></label>
+                <span asp-validation-for="FavourDto.IsCakeOfTheWeek"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn buy-now-btn">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>

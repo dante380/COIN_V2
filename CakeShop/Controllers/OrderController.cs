@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using CakeShop.Core.Dto;
-using CakeShop.Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using FavoursShop.Core.Dto;
+using FavoursShop.Core.Models;
 
-namespace CakeShop.Controllers
+namespace FavoursShop.Controllers
 {
     [Authorize]
     public class OrderController : Controller

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CakeShop.Controllers
+namespace FavoursShop.Controllers
 {
     public class ContactController : Controller
     {

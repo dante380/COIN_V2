@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
-using CakeShop.Core.Dto;
-using CakeShop.Core.Models;
+using FavoursShop.Core.Dto;
+using FavoursShop.Core.Models;
 
-namespace CakeShop.Mapping
+namespace FavoursShop.Mapping
 {
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
             CreateMap<OrderDto, Order>();
-            CreateMap<CakeDto, Cake>();
+            CreateMap<FavourDto, Favour>();
 
-            CreateMap<Cake, CakeDto>();
+            CreateMap<Favour, FavourDto>();
         }
     }
 }

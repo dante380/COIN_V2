@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CakeShop.Views.Shared
+namespace FavoursShop.Views.Shared
 {
     public class carouselModel : PageModel
     {

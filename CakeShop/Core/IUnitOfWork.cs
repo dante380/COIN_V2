@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace CakeShop.Core
+namespace FavoursShop.Core
 {
     public interface IUnitOfWork
     {

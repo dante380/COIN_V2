@@ -1,9 +1,9 @@
-﻿using CakeShop.Core.Models;
-using CakeShop.Core.ViewModel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FavoursShop.Core.Models;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Components
+namespace FavoursShop.Components
 {
     public class ShoppingCartSummary : ViewComponent
     {

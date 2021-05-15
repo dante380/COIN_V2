@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.Dto
+namespace FavoursShop.Core.Dto
 {
     public class OrderDto
     {

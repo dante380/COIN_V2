@@ -1,22 +1,22 @@
-﻿using CakeShop.Core.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FavoursShop.Core.Models;
 
-namespace CakeShop.Persistence
+namespace FavoursShop.Persistence
 {
     public class ShoppingCartService : IShoppingCartService
     {
-        private readonly CakeShopDbContext _context;
+        private readonly FavourShopDbContext _context;
 
         public string Id { get; set; }
         public IEnumerable<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        private ShoppingCartService(CakeShopDbContext context)
+        private ShoppingCartService(FavourShopDbContext context)
         {
             _context = context;
         }
@@ -24,7 +24,7 @@ namespace CakeShop.Persistence
         public static ShoppingCartService GetCart(IServiceProvider services)
         {
             var httpContext = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext;
-            var context = services.GetRequiredService<CakeShopDbContext>();
+            var context = services.GetRequiredService<FavourShopDbContext>();
 
             var request = httpContext.Request;
             var response = httpContext.Response;
@@ -42,22 +42,22 @@ namespace CakeShop.Persistence
             };
         }
 
-        public async Task<int> AddToCartAsync(Cake cake, int qty = 1)
+        public async Task<int> AddToCartAsync(Favour favour, int qty = 1)
         {
-            return await AddOrRemoveCart(cake, qty);
+            return await AddOrRemoveCart(favour, qty);
 
         }
 
-        public async Task<int> RemoveFromCartAsync(Cake cake)
+        public async Task<int> RemoveFromCartAsync(Favour favour)
         {
-            return await AddOrRemoveCart(cake, -1);
+            return await AddOrRemoveCart(favour, -1);
         }
 
         public async Task<IEnumerable<ShoppingCartItem>> GetShoppingCartItemsAsync()
         {
             ShoppingCartItems = ShoppingCartItems ?? await _context.ShoppingCartItems
                 .Where(e => e.ShoppingCartId == Id)
-                .Include(e => e.Cake)
+                .Include(e => e.Favour)
                 .ToListAsync();
 
             return ShoppingCartItems;
@@ -78,28 +78,28 @@ namespace CakeShop.Persistence
         public async Task<(int ItemCount, decimal TotalAmmount)> GetCartCountAndTotalAmmountAsync()
         {
             var subTotal = ShoppingCartItems?
-                .Select(c => c.Cake.Price * c.Qty) ??
+                .Select(c => c.Favour.Price * c.Qty) ??
                 await _context.ShoppingCartItems
                 .Where(c => c.ShoppingCartId == Id)
-                .Select(c => c.Cake.Price * c.Qty)
+                .Select(c => c.Favour.Price * c.Qty)
                 .ToListAsync();
 
             return (subTotal.Count(), subTotal.Sum());
         }
 
-        private async Task<int> AddOrRemoveCart(Cake cake, int qty)
+        private async Task<int> AddOrRemoveCart(Favour favour, int qty)
         {
 
 
             var shoppingCartItem = await _context.ShoppingCartItems
-                            .SingleOrDefaultAsync(s => s.CakeId == cake.Id && s.ShoppingCartId == Id);
+                            .SingleOrDefaultAsync(s => s.FavourId == favour.Id && s.ShoppingCartId == Id);
 
             if (shoppingCartItem == null)
             {
                 shoppingCartItem = new ShoppingCartItem
                 {
                     ShoppingCartId = Id,
-                    Cake = cake,
+                    Favour = favour,
                     Qty = 0
                 };
 
