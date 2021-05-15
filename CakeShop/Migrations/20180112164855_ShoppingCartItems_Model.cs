@@ -15,7 +15,7 @@ namespace FavoursShop.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CakeId = table.Column<int>(nullable: false),
+                    FavourId = table.Column<int>(nullable: false),
                     Qty = table.Column<int>(nullable: false),
                     ShoppingCartId = table.Column<string>(maxLength: 1024, nullable: false)
                 },
@@ -23,15 +23,15 @@ namespace FavoursShop.Migrations
                 {
                     table.PrimaryKey("PK_ShoppingCartItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShoppingCartItems_Cakes_CakeId",
-                        column: x => x.CakeId,
+                        name: "FK_ShoppingCartItems_Favours_FavourId",
+                        column: x => x.FavourId,
                         principalTable: "Favours",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingCartItems_CakeId",
+                name: "IX_ShoppingCartItems_FavourId",
                 table: "ShoppingCartItems",
                 column: "FavourId");
         }

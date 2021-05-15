@@ -9,11 +9,11 @@ namespace FavoursShop.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_OrderDetails_Cakes_CakeId",
+                name: "FK_OrderDetails_Favours_FavourId",
                 table: "OrderDetails");
 
             migrationBuilder.DropIndex(
-                name: "IX_OrderDetails_CakeId",
+                name: "IX_OrderDetails_FavourId",
                 table: "OrderDetails");
 
             migrationBuilder.DropColumn(
@@ -41,12 +41,12 @@ namespace FavoursShop.Migrations
                 defaultValue: 0);
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetails_CakeId",
+                name: "IX_OrderDetails_FavourId",
                 table: "OrderDetails",
                 column: "FavourId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_OrderDetails_Cakes_CakeId",
+                name: "FK_OrderDetails_Favours_FavourId",
                 table: "OrderDetails",
                 column: "FavourId",
                 principalTable: "Favours",

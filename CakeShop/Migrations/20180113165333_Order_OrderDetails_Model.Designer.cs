@@ -22,7 +22,7 @@ namespace FavoursShop.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CakeShop.Models.Favour", b =>
+            modelBuilder.Entity("FavoursShop.Models.Favour", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -54,7 +54,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("Favours");
                 });
 
-            modelBuilder.Entity("CakeShop.Models.Category", b =>
+            modelBuilder.Entity("FavoursShop.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -68,7 +68,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("CakeShop.Models.Order", b =>
+            modelBuilder.Entity("FavoursShop.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -119,7 +119,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("CakeShop.Models.OrderDetail", b =>
+            modelBuilder.Entity("FavoursShop.Models.OrderDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -141,7 +141,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("CakeShop.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("FavoursShop.Models.ShoppingCartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -161,30 +161,30 @@ namespace FavoursShop.Migrations
                     b.ToTable("ShoppingCartItems");
                 });
 
-            modelBuilder.Entity("CakeShop.Models.Favour", b =>
+            modelBuilder.Entity("FavoursShop.Models.Favour", b =>
                 {
-                    b.HasOne("CakeShop.Models.Category", "Category")
+                    b.HasOne("FavoursShop.Models.Category", "Category")
                         .WithMany("Favours")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CakeShop.Models.OrderDetail", b =>
+            modelBuilder.Entity("FavoursShop.Models.OrderDetail", b =>
                 {
-                    b.HasOne("CakeShop.Models.Favour", "Favour")
+                    b.HasOne("FavoursShop.Models.Favour", "Favour")
                         .WithMany()
                         .HasForeignKey("FavourId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("CakeShop.Models.Order", "Order")
+                    b.HasOne("FavoursShop.Models.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CakeShop.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("FavoursShop.Models.ShoppingCartItem", b =>
                 {
-                    b.HasOne("CakeShop.Models.Favour", "Favour")
+                    b.HasOne("FavoursShop.Models.Favour", "Favour")
                         .WithMany()
                         .HasForeignKey("FavourId")
                         .OnDelete(DeleteBehavior.Cascade);

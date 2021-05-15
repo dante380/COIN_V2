@@ -42,9 +42,9 @@ namespace FavoursShop.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cakes", x => x.Id);
+                    table.PrimaryKey("PK_Favours", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cakes_Categories_CategoryId",
+                        name: "FK_Favours_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -52,7 +52,7 @@ namespace FavoursShop.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cakes_CategoryId",
+                name: "IX_Favours_CategoryId",
                 table: "Favours",
                 column: "CategoryId");
         }
