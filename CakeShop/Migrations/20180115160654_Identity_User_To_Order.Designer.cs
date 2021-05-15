@@ -22,7 +22,7 @@ namespace FavoursShop.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("CakeShop.Core.Models.Favour", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.Favour", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -54,7 +54,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("Favours");
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.Category", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -68,7 +68,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.Order", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -126,7 +126,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.OrderDetail", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.OrderDetail", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -148,7 +148,7 @@ namespace FavoursShop.Migrations
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.ShoppingCartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -327,15 +327,15 @@ namespace FavoursShop.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.Favour", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.Favour", b =>
                 {
-                    b.HasOne("CakeShop.Core.Models.Category", "Category")
+                    b.HasOne("FavoursShop.Core.Models.Category", "Category")
                         .WithMany("Favours")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.Order", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.Order", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
@@ -343,22 +343,22 @@ namespace FavoursShop.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.OrderDetail", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.OrderDetail", b =>
                 {
-                    b.HasOne("CakeShop.Core.Models.Favour", "Favour")
+                    b.HasOne("FavoursShop.Core.Models.Favour", "Favour")
                         .WithMany()
                         .HasForeignKey("FavourId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("CakeShop.Core.Models.Order", "Order")
+                    b.HasOne("FavoursShop.Core.Models.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("CakeShop.Core.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("FavoursShop.Core.Models.ShoppingCartItem", b =>
                 {
-                    b.HasOne("CakeShop.Core.Models.Favour", "Favour")
+                    b.HasOne("FavoursShop.Core.Models.Favour", "Favour")
                         .WithMany()
                         .HasForeignKey("FavourId")
                         .OnDelete(DeleteBehavior.Cascade);
