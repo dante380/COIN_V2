@@ -7,10 +7,10 @@ namespace CakeShop.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private readonly ICakeRepository _cakeRepository;
+        private readonly IFavourRepository _cakeRepository;
         private readonly IShoppingCartService _shoppingCart;
 
-        public ShoppingCartController(ICakeRepository cakeRepository, IShoppingCartService shoppingCart)
+        public ShoppingCartController(IFavourRepository cakeRepository, IShoppingCartService shoppingCart)
         {
             _cakeRepository = cakeRepository;
             _shoppingCart = shoppingCart;
@@ -34,7 +34,7 @@ namespace CakeShop.Controllers
         [HttpPost]
         public async Task<IActionResult> AddToShoppingCart(int cakeId)
         {
-            var selectedCake = await _cakeRepository.GetCakeById(cakeId);
+            var selectedCake = await _cakeRepository.GetFavourById(cakeId);
             if (selectedCake == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace CakeShop.Controllers
         [HttpPost]
         public async Task<IActionResult> RemoveFromShoppingCart(int cakeId)
         {
-            var selectedCake = await _cakeRepository.GetCakeById(cakeId);
+            var selectedCake = await _cakeRepository.GetFavourById(cakeId);
             if (selectedCake == null)
             {
                 return NotFound();

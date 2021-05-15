@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CakeShop.Persistence
 {
-    public class CakeRepository : ICakeRepository
+    public class CakeRepository : IFavourRepository
     {
         private readonly CakeShopDbContext _context;
 

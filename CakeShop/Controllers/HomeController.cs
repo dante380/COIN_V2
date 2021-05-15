@@ -7,9 +7,9 @@ namespace CakeShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICakeRepository _cakeRepository;
+        private readonly IFavourRepository _cakeRepository;
 
-        public HomeController(ICakeRepository cakeRepository)
+        public HomeController(IFavourRepository cakeRepository)
         {
             _cakeRepository = cakeRepository;
         }
@@ -18,7 +18,7 @@ namespace CakeShop.Controllers
         {
             return View(new HomeViewModel
             {
-                CakeOfTheWeek = await _cakeRepository.GetCakesOfTheWeek()
+                CakeOfTheWeek = await _cakeRepository.GetFavoursOfTheWeek()
             });
         }
     }

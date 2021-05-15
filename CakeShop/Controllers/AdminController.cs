@@ -14,14 +14,14 @@ namespace CakeShop.Controllers
     public class AdminController : Controller
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly ICakeRepository _cakeRepository;
+        private readonly IFavourRepository _cakeRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICategoryRepository _categoryRepository;
 
         public AdminController(
             IOrderRepository orderRepository,
-            ICakeRepository cakeRepository,
+            IFavourRepository cakeRepository,
             IMapper mapper,
             IUnitOfWork unitOfWork,
             ICategoryRepository categoryRepository)
@@ -44,7 +44,7 @@ namespace CakeShop.Controllers
         [HttpGet("")]
         public async Task<IActionResult> ManageCakes()
         {
-            var cakes = await _cakeRepository.GetAllCakesNameId();
+            var cakes = await _cakeRepository.GetAllFavoursNameId();
             return View(cakes);
         }
 
@@ -71,7 +71,7 @@ namespace CakeShop.Controllers
                 });
             }
             var cake = _mapper.Map<CakeDto, Cake>(cakeDto);
-            await _cakeRepository.AddCakeAsync(cake);
+            await _cakeRepository.AddFavourAsync(cake);
             await _unitOfWork.CompleteAsync();
             return RedirectToAction("ManageCakes");
         }
@@ -79,7 +79,7 @@ namespace CakeShop.Controllers
         [HttpGet("edit/{id}")]
         public async Task<IActionResult> EditCake(int id)
         {
-            var cake = await _cakeRepository.GetCakeById(id);
+            var cake = await _cakeRepository.GetFavourById(id);
             var cakeDto = _mapper.Map<Cake, CakeDto>(cake);
             var category = await _categoryRepository.GetCategories();
 
@@ -104,7 +104,7 @@ namespace CakeShop.Controllers
             }
             var cake = _mapper.Map<CakeDto, Cake>(cakeDto);
             cake.Id = id;
-            _cakeRepository.UpdateCake(cake);
+            _cakeRepository.UpdateFavour(cake);
             await _unitOfWork.CompleteAsync();
 
             return RedirectToAction("ManageCakes");

@@ -8,10 +8,10 @@ namespace CakeShop.Controllers
     [Route("/service")]
     public class FavourController : Controller
     {
-        private readonly ICakeRepository _cakeRepository;
+        private readonly IFavourRepository _cakeRepository;
         private readonly ICategoryRepository _categoryRepository;
 
-        public FavourController(ICakeRepository cakeRepository, ICategoryRepository categoryRepository)
+        public FavourController(IFavourRepository cakeRepository, ICategoryRepository categoryRepository)
         {
             _cakeRepository = cakeRepository;
             _categoryRepository = categoryRepository;
@@ -23,7 +23,7 @@ namespace CakeShop.Controllers
             var selectedCategory = !string.IsNullOrWhiteSpace(category) ? category : null;
             var cakesListViewModel = new CakesListViewModel
             {
-                Cakes = await _cakeRepository.GetCakes(selectedCategory),
+                Cakes = await _cakeRepository.GetFavours(selectedCategory),
                 CurrentCategory = selectedCategory ?? "All services"
             };
             return View(cakesListViewModel);
@@ -33,7 +33,7 @@ namespace CakeShop.Controllers
         public async Task<IActionResult> Details(int id)
         {
 
-            var cake = await _cakeRepository.GetCakeById(id);
+            var cake = await _cakeRepository.GetFavourById(id);
 
             return View(cake);
         }
