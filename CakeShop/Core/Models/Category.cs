@@ -9,7 +9,7 @@ namespace CakeShop.Core.Models
         public int Id { get; set; }
 
         [Required]
-        [StringLength(1024)]
+        [StringLength(255)]
         public string Name { get; set; }
 
         public ICollection<Cake> Cakes { get; set; }

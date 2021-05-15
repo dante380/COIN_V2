@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 namespace CakeShop.Controllers
 {
     [Route("/service")]
-    public class CakeController : Controller
+    public class FavourController : Controller
     {
         private readonly ICakeRepository _cakeRepository;
         private readonly ICategoryRepository _categoryRepository;
 
-        public CakeController(ICakeRepository cakeRepository, ICategoryRepository categoryRepository)
+        public FavourController(ICakeRepository cakeRepository, ICategoryRepository categoryRepository)
         {
             _cakeRepository = cakeRepository;
             _categoryRepository = categoryRepository;
