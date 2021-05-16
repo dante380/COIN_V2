@@ -17,13 +17,13 @@ namespace FavoursShop
             using (var scope = host.Services.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<FavourShopDbContext>();
-                var usermanger = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 var env = scope.ServiceProvider.GetRequiredService<IConfiguration>();
 
                 context.Database.EnsureCreated();
 
-                await DbInitializer.SeedDatabaseAsync(context, usermanger, roleManager, env);
+                await DbInitializer.SeedDatabaseAsync(context, userManager, roleManager, env);
 
             }
             host.Run();

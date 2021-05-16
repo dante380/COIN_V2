@@ -1,4 +1,4 @@
-﻿@model Cake
+﻿@model Favour
 @{
     ViewData["Title"] = "Details";
 }
@@ -16,7 +16,7 @@
         <p>@Model.LongDescription</p>
         <form asp-action="AddToShoppingCart"
               asp-controller="ShoppingCart"
-              asp-route-cakeId="@Model.Id"
+              asp-route-favourId="@Model.Id"
               method="post">
 
             <button class="btn btn-primary buy-now-btn">В Корзину</button>

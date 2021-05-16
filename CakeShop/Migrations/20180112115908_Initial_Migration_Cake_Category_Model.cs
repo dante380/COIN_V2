@@ -34,7 +34,7 @@ namespace FavoursShop.Migrations
                     ImageThumbnailUrl = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     InStock = table.Column<bool>(nullable: false),
-                    IsCakeOfTheWeek = table.Column<bool>(nullable: false),
+                    IsFavourOfTheWeek = table.Column<bool>(nullable: false),
                     LongDescription = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),

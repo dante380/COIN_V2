@@ -29,7 +29,7 @@ namespace FavoursShop.Core.Dto
         public string ImageUrl { get; set; }
 
         [Display(Name = "Это услуга недели?")]
-        public bool IsCakeOfTheWeek { get; set; }
+        public bool IsFavourOfTheWeek { get; set; }
 
         [Display(Name = "Категория")]
         public int CategoryId { get; set; }

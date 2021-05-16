@@ -37,7 +37,7 @@ namespace FavoursShop.Migrations
 
                     b.Property<bool>("InStock");
 
-                    b.Property<bool>("IsCakeOfTheWeek");
+                    b.Property<bool>("IsFavourOfTheWeek");
 
                     b.Property<string>("LongDescription");
 

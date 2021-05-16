@@ -33,7 +33,7 @@ namespace FavoursShop.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<bool>("IsCakeOfTheWeek")
+                    b.Property<bool>("IsFavourOfTheWeek")
                         .HasMaxLength(255);
 
                     b.Property<string>("LongDescription")

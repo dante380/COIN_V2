@@ -31,7 +31,7 @@ namespace FavoursShop.Migrations
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<bool>("IsCakeOfTheWeek");
+                    b.Property<bool>("IsFavourOfTheWeek");
 
                     b.Property<string>("LongDescription");
 
