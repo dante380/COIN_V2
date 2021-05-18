@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using CakeShop.Persistence;
+using FavoursShop.Persistence;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CakeShop
+namespace FavoursShop
 {
     public class Program
     {
@@ -16,14 +16,14 @@ namespace CakeShop
 
             using (var scope = host.Services.CreateScope())
             {
-                var context = scope.ServiceProvider.GetRequiredService<CakeShopDbContext>();
-                var usermanger = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var context = scope.ServiceProvider.GetRequiredService<FavourShopDbContext>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
                 var env = scope.ServiceProvider.GetRequiredService<IConfiguration>();
 
                 context.Database.EnsureCreated();
 
-                await DbInitializer.SeedDatabaseAsync(context, usermanger, roleManager, env);
+                await DbInitializer.SeedDatabaseAsync(context, userManager, roleManager, env);
 
             }
             host.Run();

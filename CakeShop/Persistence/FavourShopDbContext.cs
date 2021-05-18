@@ -1,20 +1,20 @@
-﻿using CakeShop.Core.Models;
+﻿using FavoursShop.Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace CakeShop.Persistence
+namespace FavoursShop.Persistence
 {
-    public class CakeShopDbContext : IdentityDbContext<IdentityUser>
+    public class FavourShopDbContext : IdentityDbContext<IdentityUser>
     {
-        public DbSet<Cake> Cakes { get; set; }
+        public DbSet<Favour> Favours { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
 
-        public CakeShopDbContext(DbContextOptions<CakeShopDbContext> options)
+        public FavourShopDbContext(DbContextOptions<FavourShopDbContext> options)
             : base(options)
         {
 

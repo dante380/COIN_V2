@@ -1,6 +1,6 @@
-﻿namespace CakeShop.Core.Dto
+﻿namespace FavoursShop.Core.Dto
 {
-    public class CakeNameIdDto
+    public class FavourNameIdDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

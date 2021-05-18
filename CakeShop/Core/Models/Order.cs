@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
     public class Order
     {

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class Few_Props_Drop_From_Cake_Model : Migration
     {
@@ -10,32 +10,32 @@ namespace CakeShop.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "AllergyInfo",
-                table: "Cakes");
+                table: "Favours");
 
             migrationBuilder.DropColumn(
                 name: "ImageThumbnailUrl",
-                table: "Cakes");
+                table: "Favours");
 
             migrationBuilder.DropColumn(
                 name: "InStock",
-                table: "Cakes");
+                table: "Favours");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
                 name: "AllergyInfo",
-                table: "Cakes",
+                table: "Favours",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "ImageThumbnailUrl",
-                table: "Cakes",
+                table: "Favours",
                 nullable: true);
 
             migrationBuilder.AddColumn<bool>(
                 name: "InStock",
-                table: "Cakes",
+                table: "Favours",
                 nullable: false,
                 defaultValue: false);
         }

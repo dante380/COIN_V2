@@ -1,18 +1,18 @@
-﻿using CakeShop.Core.Models;
-using CakeShop.Core.ViewModel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FavoursShop.Core.Models;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Controllers
+namespace FavoursShop.Controllers
 {
     public class ShoppingCartController : Controller
     {
-        private readonly ICakeRepository _cakeRepository;
+        private readonly IFavourRepository _favourRepository;
         private readonly IShoppingCartService _shoppingCart;
 
-        public ShoppingCartController(ICakeRepository cakeRepository, IShoppingCartService shoppingCart)
+        public ShoppingCartController(IFavourRepository favourRepository, IShoppingCartService shoppingCart)
         {
-            _cakeRepository = cakeRepository;
+            _favourRepository = favourRepository;
             _shoppingCart = shoppingCart;
         }
 
@@ -32,29 +32,29 @@ namespace CakeShop.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddToShoppingCart(int cakeId)
+        public async Task<IActionResult> AddToShoppingCart(int favourId)
         {
-            var selectedCake = await _cakeRepository.GetCakeById(cakeId);
-            if (selectedCake == null)
+            var favourById = await _favourRepository.GetFavourById(favourId);
+            if (favourById == null)
             {
                 return NotFound();
             }
 
-            await _shoppingCart.AddToCartAsync(selectedCake);
+            await _shoppingCart.AddToCartAsync(favourById);
 
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public async Task<IActionResult> RemoveFromShoppingCart(int cakeId)
+        public async Task<IActionResult> RemoveFromShoppingCart(int favourId)
         {
-            var selectedCake = await _cakeRepository.GetCakeById(cakeId);
-            if (selectedCake == null)
+            var favourById = await _favourRepository.GetFavourById(favourId);
+            if (favourById == null)
             {
                 return NotFound();
             }
 
-            await _shoppingCart.RemoveFromCartAsync(selectedCake);
+            await _shoppingCart.RemoveFromCartAsync(favourById);
 
             return RedirectToAction("Index");
         }

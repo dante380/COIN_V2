@@ -1,4 +1,4 @@
-﻿@model Cake
+﻿@model Favour
 
 <div class="col-lg-4 col-md-6 col-sm-6">
     <div class="card" style="" onclick="javascript:window.location.href='/service/details/@Model.Id'">
@@ -11,7 +11,7 @@
             <p class="card-text card-short-description"><i>@Model.ShortDescription</i></p>
             <form asp-action="AddToShoppingCart"
                   asp-controller="ShoppingCart"
-                  asp-route-cakeId="@Model.Id"
+                  asp-route-favourId="@Model.Id"
                   method="post">
 
                 <button class="btn btn-primary buy-now-btn float-right">Купить</button>

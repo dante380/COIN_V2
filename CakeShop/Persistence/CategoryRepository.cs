@@ -1,15 +1,15 @@
-﻿using CakeShop.Core.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FavoursShop.Core.Models;
 
-namespace CakeShop.Persistence
+namespace FavoursShop.Persistence
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly CakeShopDbContext _context;
+        private readonly FavourShopDbContext _context;
 
-        public CategoryRepository(CakeShopDbContext context)
+        public CategoryRepository(FavourShopDbContext context)
         {
             _context = context;
         }

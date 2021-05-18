@@ -13,8 +13,8 @@
     <p>потому что мы любим тортики)))</p>
 </div>
 <div class="row">
-    @foreach (var cake in Model.CakeOfTheWeek)
+    @foreach (var favour in Model.FavourOfTheWeek)
     {
-        @Html.Partial("CakeView", cake);
+        @Html.Partial("FavourView", favour);
     }
 </div>

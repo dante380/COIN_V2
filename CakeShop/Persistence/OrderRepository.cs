@@ -1,21 +1,21 @@
-﻿using CakeShop.Core.Dto;
-using CakeShop.Core.Models;
-using CakeShop.Core.ViewModel;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FavoursShop.Core.Dto;
+using FavoursShop.Core.Models;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Persistence
+namespace FavoursShop.Persistence
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly CakeShopDbContext _context;
+        private readonly FavourShopDbContext _context;
         private readonly IShoppingCartService _shoppingCartService;
 
         public OrderRepository(
-            CakeShopDbContext context,
+            FavourShopDbContext context,
             IShoppingCartService shoppingCartService)
         {
             _context = context;
@@ -33,9 +33,9 @@ namespace CakeShop.Persistence
             await _context.OrderDetails.AddRangeAsync(shoppingCartItems.Select(e => new OrderDetail
             {
                 Qty = e.Qty,
-                CakeName = e.Cake.Name,
+                FavourName = e.Favour.Name,
                 OrderId = order.Id,
-                Price = e.Cake.Price
+                Price = e.Favour.Price
             }));
 
             await _context.SaveChangesAsync();
@@ -62,9 +62,9 @@ namespace CakeShop.Persistence
                         State = e.State,
                         ZipCode = e.ZipCode
                     },
-                    CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
+                    FavourOrderInfos = e.OrderDetails.Select(o => new MyFavourOrderInfo
                     {
-                        Name = o.CakeName,
+                        Name = o.FavourName,
                         Price = o.Price,
                         Qty = o.Qty
                     })
@@ -94,9 +94,9 @@ namespace CakeShop.Persistence
                         State = e.State,
                         ZipCode = e.ZipCode
                     },
-                    CakeOrderInfos = e.OrderDetails.Select(o => new MyCakeOrderInfo
+                    FavourOrderInfos = e.OrderDetails.Select(o => new MyFavourOrderInfo
                     {
-                        Name = o.CakeName,
+                        Name = o.FavourName,
                         Price = o.Price,
                         Qty = o.Qty
                     })

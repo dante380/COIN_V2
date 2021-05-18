@@ -2,21 +2,21 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
     public class Category
     {
         public int Id { get; set; }
 
         [Required]
-        [StringLength(1024)]
+        [StringLength(255)]
         public string Name { get; set; }
 
-        public ICollection<Cake> Cakes { get; set; }
+        public ICollection<Favour> Favours { get; set; }
 
         public Category()
         {
-            Cakes = new Collection<Cake>();
+            Favours = new Collection<Favour>();
         }
     }
 }

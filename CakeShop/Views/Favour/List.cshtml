@@ -1,17 +1,17 @@
-﻿@model CakesListViewModel
+﻿@model FavoursListViewModel
 
-@if (Model.Cakes?.Count() > 0)
+@if (Model.Favours?.Count() > 0)
 {
     <h1>@Model.CurrentCategory</h1>
     <div class="row">
-        @foreach (var cake in Model.Cakes)
+        @foreach (var favour in Model.Favours)
         {
-            @await Html.PartialAsync("CakeView", cake);
+            @await Html.PartialAsync("FavourView", favour);
         }
     </div>
 }
 else
 {
-    <h1>Cakes</h1>
+    <h1>Favours</h1>
     <p>Сорян! Мы не добавили категорию под названием '@Model.CurrentCategory' потому что мы не торгуем тем чем вы хотите :( </p>
 }

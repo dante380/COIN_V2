@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
     public interface ICategoryRepository
     {

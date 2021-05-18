@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class Initial_Migration_Cake_Category_Model : Migration
     {
@@ -24,7 +24,7 @@ namespace CakeShop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cakes",
+                name: "Favours",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -34,7 +34,7 @@ namespace CakeShop.Migrations
                     ImageThumbnailUrl = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     InStock = table.Column<bool>(nullable: false),
-                    IsCakeOfTheWeek = table.Column<bool>(nullable: false),
+                    IsFavourOfTheWeek = table.Column<bool>(nullable: false),
                     LongDescription = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
@@ -42,9 +42,9 @@ namespace CakeShop.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cakes", x => x.Id);
+                    table.PrimaryKey("PK_Favours", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cakes_Categories_CategoryId",
+                        name: "FK_Favours_Categories_CategoryId",
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
@@ -52,15 +52,15 @@ namespace CakeShop.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cakes_CategoryId",
-                table: "Cakes",
+                name: "IX_Favours_CategoryId",
+                table: "Favours",
                 column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Cakes");
+                name: "Favours");
 
             migrationBuilder.DropTable(
                 name: "Categories");

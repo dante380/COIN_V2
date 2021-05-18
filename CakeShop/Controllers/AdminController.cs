@@ -1,33 +1,33 @@
 ﻿using AutoMapper;
-using CakeShop.Core;
-using CakeShop.Core.Dto;
-using CakeShop.Core.Models;
-using CakeShop.Core.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FavoursShop.Core;
+using FavoursShop.Core.Dto;
+using FavoursShop.Core.Models;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Controllers
+namespace FavoursShop.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Route("/admin/manageCakes")]
     public class AdminController : Controller
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly ICakeRepository _cakeRepository;
+        private readonly IFavourRepository _favourRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICategoryRepository _categoryRepository;
 
         public AdminController(
             IOrderRepository orderRepository,
-            ICakeRepository cakeRepository,
+            IFavourRepository favourRepository,
             IMapper mapper,
             IUnitOfWork unitOfWork,
             ICategoryRepository categoryRepository)
         {
             _orderRepository = orderRepository;
-            _cakeRepository = cakeRepository;
+            _favourRepository = favourRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _categoryRepository = categoryRepository;
@@ -42,82 +42,80 @@ namespace CakeShop.Controllers
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> ManageCakes()
+        public async Task<IActionResult> ManageFavours()
         {
-            var cakes = await _cakeRepository.GetAllCakesNameId();
-            return View(cakes);
+            var allFavoursNameId = await _favourRepository.GetAllFavoursNameId();
+            return View(allFavoursNameId);
         }
 
         [HttpGet("add")]
-        public async Task<IActionResult> AddCake()
+        public async Task<IActionResult> AddFavour()
         {
             var category = await _categoryRepository.GetCategories();
-            return View(new CakeCreateUpdateViewModel
+            return View(new FavourCreateUpdateViewModel
             {
                 Categories = category
             });
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> AddCake(CakeDto cakeDto)
+        public async Task<IActionResult> AddFavour(FavourDto favourDto)
         {
             if (!ModelState.IsValid)
             {
                 var category = await _categoryRepository.GetCategories();
-                return View(new CakeCreateUpdateViewModel
+                return View(new FavourCreateUpdateViewModel
                 {
-                    CakeDto = cakeDto,
+                    FavourDto = favourDto,
                     Categories = category
                 });
             }
-            var cake = _mapper.Map<CakeDto, Cake>(cakeDto);
-            await _cakeRepository.AddCakeAsync(cake);
+            var favour = _mapper.Map<FavourDto, Favour>(favourDto);
+            await _favourRepository.AddFavourAsync(favour);
             await _unitOfWork.CompleteAsync();
-            return RedirectToAction("ManageCakes");
+            return RedirectToAction("ManageFavours");
         }
 
         [HttpGet("edit/{id}")]
-        public async Task<IActionResult> EditCake(int id)
+        public async Task<IActionResult> EditFavour(int id)
         {
-            var cake = await _cakeRepository.GetCakeById(id);
-            var cakeDto = _mapper.Map<Cake, CakeDto>(cake);
+            var favour = await _favourRepository.GetFavourById(id);
+            var favourDto = _mapper.Map<Favour, FavourDto>(favour);
             var category = await _categoryRepository.GetCategories();
 
-            return View(new CakeCreateUpdateViewModel
+            return View(new FavourCreateUpdateViewModel
             {
                 Categories = category,
-                CakeDto = cakeDto
+                FavourDto = favourDto
             });
         }
 
         [HttpPost("edit/{id}")]
-        public async Task<IActionResult> EditCake(int id, [FromForm]CakeDto cakeDto)
+        public async Task<IActionResult> EditFavour(int id, [FromForm]FavourDto favourDto)
         {
             if (!ModelState.IsValid)
             {
                 var category = await _categoryRepository.GetCategories();
-                return View(new CakeCreateUpdateViewModel
+                return View(new FavourCreateUpdateViewModel
                 {
                     Categories = category,
-                    CakeDto = cakeDto
+                    FavourDto = favourDto
                 });
             }
-            var cake = _mapper.Map<CakeDto, Cake>(cakeDto);
-            cake.Id = id;
-            _cakeRepository.UpdateCake(cake);
+            var favour = _mapper.Map<FavourDto, Favour>(favourDto);
+            favour.Id = id;
+            _favourRepository.UpdateFavour(favour);
             await _unitOfWork.CompleteAsync();
 
-            return RedirectToAction("ManageCakes");
+            return RedirectToAction("ManageFavours");
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCake(int id)
+        public async Task<IActionResult> DeleteFavour(int id)
         {
-            _cakeRepository.Delete(id);
+            _favourRepository.Delete(id);
             await _unitOfWork.CompleteAsync();
             return Ok();
         }
-
-
     }
 }

@@ -1,24 +1,24 @@
-﻿using CakeShop.Core.Models;
-using CakeShop.Core.ViewModel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FavoursShop.Core.Models;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Controllers
+namespace FavoursShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICakeRepository _cakeRepository;
+        private readonly IFavourRepository _favourRepository;
 
-        public HomeController(ICakeRepository cakeRepository)
+        public HomeController(IFavourRepository favourRepository)
         {
-            _cakeRepository = cakeRepository;
+            _favourRepository = favourRepository;
         }
 
         public async Task<IActionResult> Index()
         {
             return View(new HomeViewModel
             {
-                CakeOfTheWeek = await _cakeRepository.GetCakesOfTheWeek()
+                FavourOfTheWeek = await _favourRepository.GetFavoursOfTheWeek()
             });
         }
     }

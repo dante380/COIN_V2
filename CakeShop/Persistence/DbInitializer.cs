@@ -1,16 +1,16 @@
-﻿using CakeShop.Core.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FavoursShop.Core.Models;
 
-namespace CakeShop.Persistence
+namespace FavoursShop.Persistence
 {
     public static class DbInitializer
     {
         public static async Task SeedDatabaseAsync(
-            CakeShopDbContext context,
+            FavourShopDbContext context,
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager,
             IConfiguration configuration)
@@ -25,9 +25,9 @@ namespace CakeShop.Persistence
                 new Category { Name = "Games"}
             };
 
-            var cakes = new List<Cake>
+            var favours = new List<Favour>
             {
-                new Cake
+                new Favour
                 {
                     Name ="Kievstar",
                     Price = 1.00M,
@@ -35,9 +35,9 @@ namespace CakeShop.Persistence
                     LongDescription ="Київстар - одним з найбільш відомих і популярних операторів мобільного зв'язку, який надає різні пакети, тарифи і послуги абонентам мобільного зв'язку. Покриття у цього оператора мобільного зв'язку охоплює всю територію України, а послуги роумінга доступні по всьому світу. Сплатити за послуги мобільного зв'язку за номером телефону можна як на території України, так і за кордоном за допомогою нашого сайту в інтернеті і банківської картки (можливо навіть без її наявності за умови, що Вам відомі її реквізити). Незалежно від країни з якої здійснюється доступ в інтернет оплата на нашому сайті здійснюється швидко і безпечно, а зарахування коштів на Ваш рахунок майже моментально.",
                     Category = categories[0],
                     ImageUrl ="/img/kievstar.jpg",
-                    IsCakeOfTheWeek = true,
+                    IsFavourOfTheWeek = true,
                 },
-                new Cake
+                new Favour
                 {
                     Name ="Vodafone",
                     Price = 1.00M,
@@ -45,9 +45,9 @@ namespace CakeShop.Persistence
                     LongDescription ="Поповнити рахунок Vodafone, а також сплатити інші послуги, що надаються цим оператором мобільного зв'язку на нашому сайті. Для цього необхідно мати в наявності (або просто знати дані) платіжної картки Visa или MasterCard і правильно заповнити необхідні поля на сайті. Ми прагнемо зробити послугу оплати доступною, якісною і передбачити всі можливі опції для кожного випадку і кожного клієнта.",
                     Category = categories[0],
                     ImageUrl ="/img/vodafone.jpg",
-                    IsCakeOfTheWeek = true,
+                    IsFavourOfTheWeek = true,
                 },
-                new Cake
+                new Favour
                 {
                     Name ="triolan",
                     Price =150.00M,
@@ -55,9 +55,9 @@ namespace CakeShop.Persistence
                     LongDescription ="Тріолан - одна з найбільших телекомунікаційних мереж, яка надає свої послуги в таких містах України як Київ, Харків, Дніпро, Одеса, Суми, Полтава, Запоріжжя, Рівне і заявляє про те, що це не є межею. Тріолан надає такі послуги: інтернет, телебачення, ІР-телефонія, домофони, відеонагляд. Всі послуги компанії доступні всім категоріям абонентів. Для зручності користувачів служба підтримки працює цілодобово.",
                     Category = categories[1],
                     ImageUrl ="/img/triolan.jpg",
-                    IsCakeOfTheWeek = true,
+                    IsFavourOfTheWeek = true,
                 },
-                new Cake
+                new Favour
                 {
                     Name ="lanet",
                     Price = 149.95M,
@@ -65,9 +65,9 @@ namespace CakeShop.Persistence
                     LongDescription ="Ланет є одним з найбільш поширених інтернет провайдерів м.Києва. Також компанія надає свої послуги в Володимир-Волинському, Дрогобичі, Івано-Франківську, калуші, Кам'янець-Подільскому і постійно розширює своє покриття. Підключення до інтернету від Ланет є безкоштовним, а тарифи досить гнучкими. Також надається пакетне обслуговування щодо інтернету і телебачення. Серед інших послуг компанії можна виділити надання ІР-адрес, смс-інформ, антивірусний захист, подарункові сертифікати та інші. За всі послуги Ланет можна сплатити на нашому сайті з будь-якої точки світу, просто і швидко за допомогою банківської платіжної картки Visa або MasterCard.",
                     Category = categories[1],
                     ImageUrl ="/img/lanet.jpg",
-                    IsCakeOfTheWeek = true,
+                    IsFavourOfTheWeek = true,
                 },
-                new Cake
+                new Favour
                 {
                     Name ="Kievvodokanal",
                     Price= 100.00M,
@@ -75,9 +75,9 @@ namespace CakeShop.Persistence
                     LongDescription ="Київводоканал – найстаріше і найпотужніше водопостачальне підприємство України та одне з найбільших у Європі Наша історія тісно пов'язана з історією міста Києва. Протягом півтори тисячі років свого існування Київ, одне з найбільших міст Європи, не міг обійтися без систем водопостачання і каналізації, у процесі розвитку яких завжди знаходили застосування найцікавіші технологічні новинки кожної епохи.",
                     Category = categories[2],
                     ImageUrl ="/img/kievvodokanal.jpg",
-                    IsCakeOfTheWeek = true,
+                    IsFavourOfTheWeek = true,
                 },
-                new Cake
+                new Favour
                 {
                     Name ="Steam",
                     Price = 10.00M,
@@ -85,15 +85,15 @@ namespace CakeShop.Persistence
                     LongDescription ="Steam — сервіс компанії Valve, відомого розробника відеоігор, який надає послуги цифрової дистрибуції, багатокористувацьких ігор і спілкування гравців.",
                     Category = categories[3],
                     ImageUrl ="/img/steam.jpg",
-                    IsCakeOfTheWeek = true,
+                    IsFavourOfTheWeek = true,
                 }
 
             };
 
-            if (!context.Categories.Any() && !context.Cakes.Any())
+            if (!context.Categories.Any() && !context.Favours.Any())
             {
                 context.Categories.AddRange(categories);
-                context.Cakes.AddRange(cakes);
+                context.Favours.AddRange(favours);
                 context.SaveChanges();
             }
 

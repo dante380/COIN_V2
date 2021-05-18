@@ -26,25 +26,25 @@
         @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
         {
             <tr>
-                <td>@item.Cake.Name</td>
+                <td>@item.Favour.Name</td>
                 <td>
                     <form class="d-inline align-middle" asp-action="RemoveFromShoppingCart"
                           asp-controller="ShoppingCart"
-                          asp-route-cakeId="@item.CakeId"
+                          asp-route-favourId="@item.FavourId"
                           method="post">
                         <button class="btn fa fa-minus fa-small" aria-hidden="true"></button>
                     </form>
                     <span style="padding:1px 10px">@item.Qty</span>
                     <form class="d-inline align-middle" asp-action="AddToShoppingCart"
                           asp-controller="ShoppingCart"
-                          asp-route-cakeId="@item.CakeId"
+                          asp-route-favourId="@item.FavourId"
                           method="post">
                         <button class="btn fa fa-plus fa-small" aria-hidden="true"></button>
                     </form>
 
                 </td>
-                <td>@item.Cake.Price.ToString("c")</td>
-                <td>@((item.Cake.Price * item.Qty).ToString("c"))</td>
+                <td>@item.Favour.Price.ToString("c")</td>
+                <td>@((item.Favour.Price * item.Qty).ToString("c"))</td>
             </tr>
         }
     </tbody>

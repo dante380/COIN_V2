@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace CakeShop.Migrations
+namespace FavoursShop.Migrations
 {
     public partial class ShoppingCartItems_Model : Migration
     {
@@ -15,7 +15,7 @@ namespace CakeShop.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CakeId = table.Column<int>(nullable: false),
+                    FavourId = table.Column<int>(nullable: false),
                     Qty = table.Column<int>(nullable: false),
                     ShoppingCartId = table.Column<string>(maxLength: 1024, nullable: false)
                 },
@@ -23,17 +23,17 @@ namespace CakeShop.Migrations
                 {
                     table.PrimaryKey("PK_ShoppingCartItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ShoppingCartItems_Cakes_CakeId",
-                        column: x => x.CakeId,
-                        principalTable: "Cakes",
+                        name: "FK_ShoppingCartItems_Favours_FavourId",
+                        column: x => x.FavourId,
+                        principalTable: "Favours",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ShoppingCartItems_CakeId",
+                name: "IX_ShoppingCartItems_FavourId",
                 table: "ShoppingCartItems",
-                column: "CakeId");
+                column: "FavourId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -1,10 +1,10 @@
-﻿using CakeShop.Core.ViewModel;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Controllers
+namespace FavoursShop.Controllers
 {
     public class AccountController : Controller
     {

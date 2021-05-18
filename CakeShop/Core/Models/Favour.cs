@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
-    public class Cake
+    public class Favour
     {
         public int Id { get; set; }
 
@@ -28,7 +28,7 @@ namespace CakeShop.Core.Models
 
         [Required]
         [StringLength(1024)]
-        public bool IsCakeOfTheWeek { get; set; }
+        public bool IsFavourOfTheWeek { get; set; }
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }

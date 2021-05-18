@@ -1,13 +1,13 @@
-﻿using CakeShop.Core;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using FavoursShop.Core;
 
-namespace CakeShop.Persistence
+namespace FavoursShop.Persistence
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly CakeShopDbContext _context;
+        private readonly FavourShopDbContext _context;
 
-        public UnitOfWork(CakeShopDbContext context)
+        public UnitOfWork(FavourShopDbContext context)
         {
             _context = context;
         }

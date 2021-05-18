@@ -1,8 +1,8 @@
-﻿using CakeShop.Core.ViewModel;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using FavoursShop.Core.ViewModel;
 
-namespace CakeShop.Core.Models
+namespace FavoursShop.Core.Models
 {
     public interface IOrderRepository
     {
