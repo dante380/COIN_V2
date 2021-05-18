@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FavoursShop", "CakeShop\FavoursShop.csproj", "{092FE3AC-494D-49C6-B0FE-212F42420B7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FavourShop", "FavourShop\FavourShop.csproj", "{A8DA9F0E-5B31-4EBF-A0B7-8B966725FA8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{092FE3AC-494D-49C6-B0FE-212F42420B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{092FE3AC-494D-49C6-B0FE-212F42420B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{092FE3AC-494D-49C6-B0FE-212F42420B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{092FE3AC-494D-49C6-B0FE-212F42420B7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8DA9F0E-5B31-4EBF-A0B7-8B966725FA8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8DA9F0E-5B31-4EBF-A0B7-8B966725FA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8DA9F0E-5B31-4EBF-A0B7-8B966725FA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8DA9F0E-5B31-4EBF-A0B7-8B966725FA8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BABBCF75-3DEA-47A4-8D9D-8F634966E28F}
+		SolutionGuid = {FCB40508-9C13-46BB-BA37-BE68C4B6D488}
 	EndGlobalSection
 EndGlobal

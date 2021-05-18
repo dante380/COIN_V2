@@ -1,6 +1,7 @@
-﻿using AutoMapper;
+using AutoMapper;
 using FavoursShop.Core;
 using FavoursShop.Core.Models;
+using FavoursShop.Mapping;
 using FavoursShop.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace FavoursShop
 {
@@ -21,7 +23,6 @@ namespace FavoursShop
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
             services.AddScoped<IFavourRepository, FavourRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
@@ -34,8 +35,8 @@ namespace FavoursShop
             {
                 ctx.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddAutoMapper();
-
+            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddRazorPages();
             services.AddMemoryCache();
 
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
@@ -55,7 +56,7 @@ namespace FavoursShop
             });
 
         }
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -64,12 +65,15 @@ namespace FavoursShop
             }
 
             app.UseStatusCodePages();
-            //app.UseSession();
             app.UseStaticFiles();
 
-            app.UseAuthentication();
+            app.UseRouting();
 
-            app.UseMvc(routes =>
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
 
                 //routes.MapRoute(
@@ -77,9 +81,9 @@ namespace FavoursShop
                 //    template: "Favours/{action}/{category?}",
                 //    defaults: new { Controller = "Favour", action = "List" });
 
-                routes.MapRoute(
+                endpoints.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
             });
         }
