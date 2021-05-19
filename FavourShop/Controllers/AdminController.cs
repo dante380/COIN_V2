@@ -109,13 +109,5 @@ namespace FavoursShop.Controllers
 
             return RedirectToAction("ManageFavours");
         }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFavour(int id)
-        {
-            _favourRepository.Delete(id);
-            await _unitOfWork.CompleteAsync();
-            return Ok();
-        }
     }
 }
